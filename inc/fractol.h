@@ -14,6 +14,7 @@
 # define FRACTOL_H
 
 #include "mlx.h"
+#include "libft.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
@@ -34,6 +35,29 @@ typedef struct s_fractol
 	double		min_re, max_re, min_im, max_im;
 }				t_fractol;
 
+typedef struct s_complex
+{
+    double re;
+    double im;
+} t_complex;
+
+typedef struct s_fractal
+{
+    int x;
+    int y;
+    int iteration;
+    t_complex c;
+    t_complex z;
+    double tmp;
+} t_fractale;
+
+typedef enum e_type
+{
+    MANDELBROT,
+    JULIA
+} t_type;
+
+
 //MAIN
 void	start_fractol(char *type);
 
@@ -43,6 +67,14 @@ int	get_color(int iteration);
 
 //MANDELBROT
 void	draw_mandelbrot(t_fractol *f);
+
+// INIT
+// init.c
+t_fractol *init_fractol(char **argv);
+t_fractol *fractol_init_base(void);
+void fractol_init_view(t_fractol *f);
+void fractol_parse_args(t_fractol *f, char **argv);
+
 
 
 

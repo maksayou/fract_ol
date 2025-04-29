@@ -10,4 +10,24 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "fractol.h"
+
+int main(int argc, char **argv)
+{
+    t_fractol *f;
+
+    if (argc < 2)
+    {
+        ft_printf("Usage : ./fractol mandelbrot | julia [re im]\n");
+        return (1);
+    }
+    f = init_fractol(argv);
+    if (!f)
+        return (1);
+    draw_fractal(f);
+    setup_hooks(f);
+    mlx_loop(f->mlx);
+    return (0);
+}
+
 
