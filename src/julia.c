@@ -2,7 +2,7 @@
 
 void draw_julia(t_fractol *f)
 {
-    t_fractal j;
+    t_fractale j;
 
     j.y = -1;
     while (++j.y < HEIGHT)

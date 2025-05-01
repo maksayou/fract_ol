@@ -1,33 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mayoucha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/28 20:25:08 by mayoucha          #+#    #+#             */
-/*   Updated: 2025/04/28 20:25:10 by mayoucha         ###   ########.fr       */
+/*   Created: 2024/11/22 16:08:51 by mayoucha          #+#    #+#             */
+/*   Updated: 2024/11/29 11:48:35 by mayoucha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "libft.h"
 
-int main(int argc, char **argv)
+size_t	ft_strlen(const char *s);
+
+void	ft_putstr_fd(char *s, int fd)
 {
-    t_fractol *f;
-
-    if (argc < 2)
-    {
-        write(1, "Usage : ./fractol mandelbrot | julia [re im]\n", 45);
-        return (1);
-    }
-    f = init_fractol(argv);
-    if (!f)
-        return (1);
-    draw_fractal(f);
-    setup_hooks(f);
-    mlx_loop(f->mlx);
-    return (0);
+	if (s == NULL || fd < 0)
+		return ;
+	write(fd, s, ft_strlen(s));
 }
-
-

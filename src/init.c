@@ -10,7 +10,7 @@ t_fractol *fractol_init_base(void)
     f->mlx = mlx_init();
     f->win = mlx_new_window(f->mlx, WIDTH, HEIGHT, "fractol");
     f->img = mlx_new_image(f->mlx, WIDTH, HEIGHT);
-    f->addr = mlx_get_data_addr(f->img, &f->bpp, &f->line_length, &f->endian);
+    f->addr = mlx_get_data_addr(f->img, &f->bits_per_pixel, &f->line_length, &f->endian);
     return (f);
 }
 
@@ -42,7 +42,7 @@ void fractol_parse_args(t_fractol *f, char **argv)
     }
     else
     {
-        ft_printf("Available fractals : mandelbrot | julia [re im]\n");
+        write(1, "Available fractals : mandelbrot | julia [re im]\n", 48);
         free(f);
         exit(1);
     }

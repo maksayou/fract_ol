@@ -1,33 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mayoucha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/28 20:25:08 by mayoucha          #+#    #+#             */
-/*   Updated: 2025/04/28 20:25:10 by mayoucha         ###   ########.fr       */
+/*   Created: 2024/11/16 13:25:26 by mayoucha          #+#    #+#             */
+/*   Updated: 2024/11/24 12:11:11 by mayoucha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "libft.h"
 
-int main(int argc, char **argv)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-    t_fractol *f;
+	const unsigned char	*s1;
+	size_t				i;
 
-    if (argc < 2)
-    {
-        write(1, "Usage : ./fractol mandelbrot | julia [re im]\n", 45);
-        return (1);
-    }
-    f = init_fractol(argv);
-    if (!f)
-        return (1);
-    draw_fractal(f);
-    setup_hooks(f);
-    mlx_loop(f->mlx);
-    return (0);
+	s1 = (const unsigned char *)s;
+	i = 0;
+	while (i < n)
+	{
+		if (s1[i] == (unsigned char)c)
+			return ((void *)&s1[i]);
+		i++;
+	}
+	return (0);
 }
-
-

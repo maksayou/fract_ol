@@ -1,14 +1,12 @@
-
-
 NAME = fractol
 
 SRC_DIR = src
 INC_DIR = inc
 LIBFT_DIR = libft
+MINILIBX_DIR = minilibx
 
 SRCS = $(SRC_DIR)/draw_fractal.c \
        $(SRC_DIR)/events.c \
-       $(SRC_DIR)/fractol.c \
        $(SRC_DIR)/init.c \
        $(SRC_DIR)/julia.c \
        $(SRC_DIR)/main.c \
@@ -18,11 +16,11 @@ SRCS = $(SRC_DIR)/draw_fractal.c \
 OBJS = $(SRCS:.c=.o)
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -I$(INC_DIR) -I$(LIBFT_DIR)
+CFLAGS = -Wall -Wextra -Werror -I$(INC_DIR) -I$(LIBFT_DIR) -I$(MINILIBX_DIR)
 
 LIBFT = $(LIBFT_DIR)/libft.a
 
-MLX = -lmlx -lXext -lX11 -lm
+MLX = -Lminilibx -lmlx -lXext -lX11 -lm
 
 all: $(LIBFT) $(NAME)
 

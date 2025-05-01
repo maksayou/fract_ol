@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mayoucha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/28 20:25:08 by mayoucha          #+#    #+#             */
-/*   Updated: 2025/04/28 20:25:10 by mayoucha         ###   ########.fr       */
+/*   Created: 2024/11/26 13:29:59 by mayoucha          #+#    #+#             */
+/*   Updated: 2024/11/29 17:17:08 by mayoucha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "libft.h"
 
-int main(int argc, char **argv)
+void	ft_lstclear(t_list **lst, void (*del)(void*))
 {
-    t_fractol *f;
+	t_list	*lst1;
+	t_list	*lst2;
 
-    if (argc < 2)
-    {
-        write(1, "Usage : ./fractol mandelbrot | julia [re im]\n", 45);
-        return (1);
-    }
-    f = init_fractol(argv);
-    if (!f)
-        return (1);
-    draw_fractal(f);
-    setup_hooks(f);
-    mlx_loop(f->mlx);
-    return (0);
+	if (!lst || !del)
+		return ;
+	lst1 = *lst;
+	while (lst1)
+	{
+		lst2 = lst1->next;
+		ft_lstdelone(lst1, del);
+		lst1 = lst2;
+	}
+	*lst = NULL;
 }
-
-

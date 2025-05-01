@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mayoucha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/28 20:25:08 by mayoucha          #+#    #+#             */
-/*   Updated: 2025/04/28 20:25:10 by mayoucha         ###   ########.fr       */
+/*   Created: 2024/11/15 17:46:52 by mayoucha          #+#    #+#             */
+/*   Updated: 2024/11/22 17:41:58 by mayoucha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "libft.h"
 
-int main(int argc, char **argv)
+void	*ft_memset(void *s, int c, int n)
 {
-    t_fractol *f;
+	size_t			i;
+	unsigned char	*str;
 
-    if (argc < 2)
-    {
-        write(1, "Usage : ./fractol mandelbrot | julia [re im]\n", 45);
-        return (1);
-    }
-    f = init_fractol(argv);
-    if (!f)
-        return (1);
-    draw_fractal(f);
-    setup_hooks(f);
-    mlx_loop(f->mlx);
-    return (0);
+	str = (unsigned char *) s;
+	i = 0;
+	while ((int)i < n)
+	{
+		str[i] = (unsigned char)c;
+		i++;
+	}
+	return (s);
 }
-
-

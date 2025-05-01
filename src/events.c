@@ -51,7 +51,7 @@ int handle_mouse(int button, int x, int y, t_fractol *f)
     f->max_re = mouse_re + (f->max_re - mouse_re) * zoom_factor;
     f->min_im = mouse_im + (f->min_im - mouse_im) * zoom_factor;
     f->max_im = mouse_im + (f->max_im - mouse_im) * zoom_factor;
-    redraw(f); // à toi de définir redraw() pour rafraîchir l'image
+    //redraw(f); // définir redraw() pour rafraîchir l'image
     return (0);
 }
 
