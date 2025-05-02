@@ -1,36 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fractol_utils.c                                    :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mayoucha <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/28 20:25:24 by mayoucha          #+#    #+#             */
-/*   Updated: 2025/04/28 20:25:26 by mayoucha         ###   ########.fr       */
+/*   Created: 2024/11/16 16:15:37 by mayoucha          #+#    #+#             */
+/*   Updated: 2024/11/20 19:02:17 by mayoucha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "libft.h"
+//#include <stdio.h>
 
-void put_pixel(t_fractol *f, int x, int y, int color)
+int	ft_atoi(const char *nptr)
 {
-    int offset = (y * f->line_length + x * (f->bits_per_pixel / 8));
-    *(int *)(f->addr + offset) = color;
-}
+	int	sign;
+	int	nb;
 
-int get_color(int iteration)
-{
-    if (iteration == MAX_ITER)
-        return (0x000000); // Noir si appartient à l'ensemble
-    return (0xE5CCFF * iteration / MAX_ITER); // Dégradé
-}
-
-int	ft_atof(const char *nptr)
-{
-	double	sign;
-	double	nb;
-
-	sign = 1.0;
+	sign = 1;
 	nb = 0;
 	while ((*nptr == ' ') || (*nptr >= 9 && *nptr <= 13))
 		nptr++;
@@ -42,9 +30,26 @@ int	ft_atof(const char *nptr)
 	}
 	while (*nptr >= '0' && *nptr <= '9')
 	{
-		nb = (nb * 10.0) + (*nptr - '0');
+		nb = (nb * 10) + (*nptr - '0');
 		nptr++;
 	}
 	return (nb * sign);
 }
 
+/*int	main(void)
+{
+	char	a[] = "-563a45";
+	char	b[] = "+563a45,";
+	char 	c[] = "aaaa";
+	char	d[] = "";
+	char	e[] = " ";
+	char	max_value[] = "2147483647";
+
+	printf("%d\n", ft_atoi(a));
+	printf("%d\n", ft_atoi(b));
+	printf("%d\n", ft_atoi(c));
+	printf("%d\n", ft_atoi(d));
+	printf("%d\n", ft_atoi(e));
+	printf("%d\n", ft_atoi(max_value));
+	return (0);
+}*/

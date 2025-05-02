@@ -25,13 +25,17 @@ int get_color(int iteration)
     return (0xE5CCFF * iteration / MAX_ITER); // Dégradé
 }
 
-int	ft_atof(const char *nptr)
+double	ft_atof(const char *nptr)
 {
 	double	sign;
 	double	nb;
+	double	tmp;
+	double	div;
 
 	sign = 1.0;
+	tmp = 0.0;
 	nb = 0;
+	div = 1.0;
 	while ((*nptr == ' ') || (*nptr >= 9 && *nptr <= 13))
 		nptr++;
 	if ((*nptr == '-') || (*nptr == '+'))
@@ -40,11 +44,21 @@ int	ft_atof(const char *nptr)
 			sign *= -1;
 		nptr++;
 	}
-	while (*nptr >= '0' && *nptr <= '9')
+	while (*nptr >= '0' && *nptr <= '9' && *nptr != '.')
 	{
 		nb = (nb * 10.0) + (*nptr - '0');
 		nptr++;
 	}
-	return (nb * sign);
+	if (*nptr == '.')
+		{
+			nptr++;
+			while (*nptr >= '0' && *nptr <= '9')
+			{
+				tmp = ((tmp * 10.0) + (*nptr - '0'));
+				div *= 10.0;
+				nptr++;
+			}
+		}
+	return (sign * (nb + tmp / div));
 }
 
